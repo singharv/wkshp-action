@@ -1,0 +1,26 @@
+name: GitHub Actions Demo
+run-name: GitHub Actions Demo Run
+on: 
+# Webhook Events
+  push:
+    branches:
+      - 'main'
+    paths-ignore:
+      - '.github/workflows'
+  issues:
+    types: [opened, reopened]
+
+   # Scheduled events
+  schedule:
+    # - cron: '*/15 * * * *'
+    # - cron: '0 9-17 * * *'
+    - cron: '11 11 * * 5'
+
+  # Manual events
+  workflow_dispatch:  
+    
+    
+
+
+
+
