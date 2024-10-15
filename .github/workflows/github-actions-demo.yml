@@ -26,7 +26,21 @@ jobs:
       - uses: actions/checkout@v3
       - name: Print greeting
         run: echo Hello, world!
+      - name: Set time
+        run: echo '::set-output name =my_time::$(date)'
+        id: set-time
 
+      - name: Output time
+        run: echo "It was ${{ steps.set-time.outputs.my_time }} in the previous step."
+
+      - name: Writing to Workflow log
+        run: |
+          echo "Writing to Workflow Log"
+          echo "::group::Writing to the log"
+          echo "::notice file=starter.yml,line=169,col=19,endColumn=22::Writing a notice"
+          echo "::Warning file=starter.yml,line=171,col=19,endColumn=22::Writing a Warning"
+          echo "::endgroup::"
+      
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
