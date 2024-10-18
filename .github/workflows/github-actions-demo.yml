@@ -65,6 +65,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     name: deploytodev
+    environment:
+      name: dev
     steps:
       - uses: actions/checkout@v3
       - name: Print greeting
@@ -74,6 +76,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: dev
     name: deploytoQA
+    environment:
+      name: QA
     steps:
       - uses: actions/checkout@v3
       - name: Print greeting
